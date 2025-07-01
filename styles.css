@@ -1,0 +1,597 @@
+/* 复古主题盲盒抽奖游戏样式 */
+:root {
+    --primary-color: #ff6b6b;
+    --secondary-color: #4ecdc4;
+    --background-color: #f7f7f7;
+    --text-color: #333333;
+    --box-color: #ffbe0b;
+    --box-shadow: #e76f51;
+    --border-color: #2a9d8f;
+    --success-color: #2a9d8f;
+    --error-color: #888888;
+    --title-font: 'Courier New', Courier, monospace;
+    --body-font: 'Arial', sans-serif;
+    --help-text-color: #6c757d;
+    --notebook-bg: #fffdf0;
+    --notebook-line-color: #ccc;
+    --notebook-header-bg: #f0e6b2;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--body-font);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 20px;
+    background-image: radial-gradient(#e9c46a 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border: 3px solid var(--border-color);
+}
+
+main {
+    display: flex;
+    gap: 20px;
+}
+
+.main-content {
+    flex: 1;
+}
+
+/* Notebook styles */
+.notebook-panel {
+    width: 300px;
+    background-color: var(--notebook-bg);
+    border-radius: 10px;
+    border-left: 1px solid var(--notebook-line-color);
+    box-shadow: -3px 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 150px);
+    max-height: 800px;
+    position: relative;
+    font-family: var(--title-font);
+}
+
+.notebook-header {
+    background-color: var(--notebook-header-bg);
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--notebook-line-color);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.notebook-header h3 {
+    margin: 0;
+    color: var(--text-color);
+    font-size: 1.2rem;
+}
+
+.notebook-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+    background-image: repeating-linear-gradient(
+        var(--notebook-bg), 
+        var(--notebook-bg) 24px, 
+        var(--notebook-line-color) 25px
+    );
+    background-size: 100% 25px;
+    line-height: 25px;
+    position: relative;
+}
+
+.notebook-page {
+    min-height: 100%;
+    padding-bottom: 10px;
+}
+
+.notebook-entry {
+    margin-bottom: 5px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.winner-prize {
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.winner-name {
+    color: var(--text-color);
+    flex: 1;
+}
+
+.winner-time {
+    font-size: 0.8rem;
+    color: var(--help-text-color);
+}
+
+.notebook-placeholder {
+    color: var(--help-text-color);
+    font-style: italic;
+    text-align: center;
+    padding: 30px 0;
+}
+
+.notebook-input {
+    padding: 10px;
+    border-top: 1px solid var(--notebook-line-color);
+    display: flex;
+    background-color: var(--notebook-bg);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.notebook-input input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid var(--notebook-line-color);
+    border-radius: 5px;
+    margin-right: 5px;
+    font-family: var(--body-font);
+}
+
+.small-btn {
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+.btn-delete {
+    color: var(--error-color);
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 16px;
+    margin-left: 5px;
+    opacity: 0.5;
+}
+
+.btn-delete:hover {
+    opacity: 1;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+h1 {
+    font-family: var(--title-font);
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 0 var(--box-shadow);
+    letter-spacing: 2px;
+}
+
+h2 {
+    font-family: var(--title-font);
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    border-bottom: 2px dashed var(--border-color);
+    padding-bottom: 10px;
+}
+
+.panel {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-help {
+    font-size: 0.9rem;
+    color: var(--help-text-color);
+    margin-top: 5px;
+    font-style: italic;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: var(--title-font);
+    margin-right: 10px;
+    transition: all 0.3s ease;
+    background-color: #e9ecef;
+    color: var(--text-color);
+    border: 2px solid var(--text-color);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: 2px solid var(--box-shadow);
+}
+
+.secondary-btn {
+    background-color: var(--secondary-color);
+    color: white;
+    border: 2px solid var(--border-color);
+}
+
+#boxes-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: var(--box-color);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    perspective: 1000px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    border: 3px solid var(--box-shadow);
+    box-shadow: 0 4px 0 var(--box-shadow);
+}
+
+.box:hover {
+    transform: translateY(-5px);
+}
+
+.box.opened {
+    background-color: white;
+    transform: rotateY(180deg);
+    cursor: not-allowed;
+}
+
+.box.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+.box-number {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+}
+
+.prize-name {
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+    backface-visibility: hidden;
+}
+
+.prize-name.no-prize {
+    color: var(--error-color);
+    font-style: italic;
+}
+
+.box-front, .box-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.box-front {
+    background-color: var(--box-color);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.box-back {
+    background-color: white;
+    transform: rotateY(180deg);
+    padding: 10px;
+}
+
+.action-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.instruction {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    border-left: 4px solid var(--secondary-color);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+    animation: modalopen 0.4s;
+}
+
+@keyframes modalopen {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.prize-result {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: rgba(46, 204, 113, 0.1);
+    border-radius: 10px;
+    border: 2px solid var(--success-color);
+}
+
+.no-prize-result {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: rgba(136, 136, 136, 0.1);
+    border-radius: 10px;
+    border: 2px solid var(--error-color);
+}
+
+#result-container {
+    margin: 20px 0;
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px dashed var(--border-color);
+    margin-bottom: 5px;
+}
+
+.no-prize-item {
+    background-color: rgba(136, 136, 136, 0.05);
+    border-radius: 5px;
+}
+
+.unopened-item {
+    background-color: rgba(241, 196, 15, 0.05);
+    border-radius: 5px;
+}
+
+.prize-level {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.no-prize-item .prize-level {
+    color: var(--error-color);
+}
+
+.prize-count {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.no-prize-item .prize-count {
+    background-color: var(--error-color);
+}
+
+/* Name prompt styles */
+.name-prompt {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #fff3cd;
+    border-left: 4px solid #ffca28;
+    color: #856404;
+    font-size: 0.9rem;
+    border-radius: 4px;
+}
+
+#prize-inputs {
+    margin-bottom: 15px;
+}
+
+/* Prize tag styles for opened boxes */
+.prize-tag {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--primary-color);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    min-width: 80%;
+}
+
+.no-prize-tag {
+    background-color: var(--error-color);
+    font-style: italic;
+}
+
+/* Enhance distinction for winning prizes */
+.prize-name.prize-win {
+    color: var(--success-color);
+    font-weight: bold;
+}
+
+.prize-input-group {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.prize-input-group input {
+    margin-right: 10px;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+}
+
+.prize-input-group input[type="text"] {
+    flex: 2;
+}
+
+.prize-input-group input[type="number"] {
+    flex: 1;
+}
+
+/* Prize configuration interface styles */
+.config-info {
+    background-color: #f8f9fa;
+    border-left: 4px solid var(--secondary-color);
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+.prize-count-display {
+    background-color: #f8f9fa;
+    padding: 10px;
+    margin: 15px 0;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.count-valid {
+    color: var(--success-color);
+}
+
+.count-invalid {
+    color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .box {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .modal-content {
+        width: 90%;
+        margin: 30% auto;
+    }
+    
+    /* 移动端笔记本样式 */
+    main {
+        flex-direction: column;
+    }
+    
+    .notebook-panel {
+        width: 100%;
+        height: auto;
+        max-height: 400px;
+        margin-top: 20px;
+    }
+    
+    .notebook-content {
+        max-height: 250px;
+    }
+} 

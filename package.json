@@ -1,0 +1,23 @@
+{
+  "name": "retro_lucky_draw",
+  "version": "1.0.0",
+  "description": "一个简单而有趣的H5抽奖小游戏，用于活动中随机分配奖品",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "lucky-draw",
+    "h5-game",
+    "random",
+    "prize",
+    "lottery"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+} 

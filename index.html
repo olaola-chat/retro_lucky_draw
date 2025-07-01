@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>幸运盲盒抽奖</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>幸运盲盒抽奖</h1>
+        </header>
+        
+        <main>
+            <div class="main-content">
+                <!-- 管理员配置界面 -->
+                <div id="admin-panel" class="panel">
+                    <h2>活动配置</h2>
+                    <div class="form-group">
+                        <label for="total-participants">参与人数 (N):</label>
+                        <input type="number" id="total-participants" min="1" value="10">
+                        <p class="form-help">盲盒数量将自动设置为参与人数的两倍 (2N)</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button id="configure-prizes" class="btn">配置奖品</button>
+                    </div>
+                    
+                    <div id="prize-configuration" style="display: none;">
+                        <h3>奖品配置</h3>
+                        <div id="prize-inputs"></div>
+                        <button id="save-configuration" class="btn">保存配置</button>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button id="start-activity" class="btn primary-btn">开始活动</button>
+                        <button id="reset-activity" class="btn secondary-btn">重置活动</button>
+                    </div>
+                </div>
+                
+                <!-- 抽奖界面 - 所有盲盒一次性显示 -->
+                <div id="draw-panel" class="panel" style="display: none;">
+                    <h2>点击盲盒进行抽奖</h2>
+                    <div class="instruction">
+                        <p>参与人数: <span id="participant-count"></span>, 盲盒数量: <span id="box-count"></span></p>
+                        <p>点击任意盲盒即可打开。打开后的盲盒不能再次使用。</p>
+                    </div>
+                    
+                    <div id="boxes-container"></div>
+                    
+                    <div class="action-buttons">
+                        <button id="show-results" class="btn primary-btn">查看结果</button>
+                        <button id="back-to-admin" class="btn secondary-btn">返回配置</button>
+                    </div>
+                </div>
+                
+                <!-- 结果展示 -->
+                <div id="result-panel" class="panel" style="display: none;">
+                    <h2>抽奖结果</h2>
+                    <div id="result-container"></div>
+                    <button id="back-to-draw" class="btn primary-btn">返回抽奖</button>
+                    <button id="reset-from-result" class="btn secondary-btn">重置活动</button>
+                </div>
+            </div>
+            
+            <!-- 笔记本 - 记录中奖情况 -->
+            <div id="notebook-panel" class="notebook-panel">
+                <div class="notebook-header">
+                    <h3>中奖记录</h3>
+                    <button id="clear-notebook" class="btn small-btn">清空</button>
+                </div>
+                <div class="notebook-content">
+                    <div class="notebook-page" id="winners-list">
+                        <div class="notebook-placeholder">
+                            <p>暂无中奖记录</p>
+                            <p>打开盲盒后中奖信息将记录在这里</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="notebook-input">
+                    <input type="text" id="winner-name" placeholder="输入中奖者姓名">
+                    <button id="add-winner-note" class="btn small-btn">添加</button>
+                </div>
+            </div>
+        </main>
+        
+        <!-- 弹窗 -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <div id="modal-body"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html> 
